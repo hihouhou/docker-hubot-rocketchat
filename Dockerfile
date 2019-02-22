@@ -9,6 +9,8 @@ FROM debian:latest
 
 MAINTAINER hihouhou < hihouhou@hihouhou.com >
 
+ENV HUBOT_ROCKETCHAT_VERSION v1.0.10
+
 # Update & install packages for installing rocketchat
 RUN apt-get update && \
     apt-get install -y git curl && \
