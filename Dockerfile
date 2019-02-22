@@ -13,15 +13,17 @@ ENV HUBOT_ROCKETCHAT_VERSION v1.0.10
 
 # Update & install packages for installing rocketchat
 RUN apt-get update && \
-    apt-get install -y git curl && \
+    apt-get install -y git curl gnupg2 wget && \
     useradd hubot -m
 
-RUN curl -sL https://deb.nodesource.com/setup | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get install -y nodejs
 
 #Download Stable version of Rocket.Chat
-RUN git clone https://github.com/RocketChat/hubot-rocketchat.git && \
+RUN mkdir hubot-rocketchat && \
     cd hubot-rocketchat && \
+    wget https://api.github.com/repos/RocketChat/hubot-rocketchat/tarball/${HUBOT_ROCKETCHAT_VERSION} -O ${HUBOT_ROCKETCHAT_VERSION}.tar.gz && \
+    tar xf  ${HUBOT_ROCKETCHAT_VERSION}.tar.gz --strip-components=1 && \
     npm install -g coffee-script yo generator-hubot
 
 
