@@ -9,7 +9,7 @@ FROM debian:latest
 
 LABEL org.opencontainers.image.authors="hihouhou < hihouhou@hihouhou.com >"
 
-ENV HUBOT_ROCKETCHAT_VERSION v1.0.11
+ENV HUBOT_ROCKETCHAT_VERSION=v1.0.11
 
 # Update & install packages for installing rocketchat
 RUN apt-get update && \
